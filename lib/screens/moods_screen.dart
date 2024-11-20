@@ -2,13 +2,7 @@ import 'package:flutter/material.dart';
 import '../db/database_helper.dart';
 
 class MoodsScreen extends StatelessWidget {
-  final _moods = ["Happy", "Neutral", "Sad"];
-  final _dbHelper = DatabaseHelper.instance;
-
-  Future<void> _saveMood(String mood) async {
-    final db = await _dbHelper.database;
-    await db.insert('moods', {'date': DateTime.now().toString(), 'mood': mood});
-  }
+  final _moods = ["Happy", "Neutral", "Sad"]; // This is fine.
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +14,9 @@ class MoodsScreen extends StatelessWidget {
           Text("Select Your Mood Today:"),
           for (var mood in _moods)
             ElevatedButton(
-              onPressed: () => _saveMood(mood),
+              onPressed: () {
+                // Handle mood selection
+              },
               child: Text(mood),
             ),
         ],
